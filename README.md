@@ -11,6 +11,10 @@
 | 18-10| [Course-2](#courses) |
 | 24-10| [Course-3](#courses) |
 | 4-11 | Read [Papers](#papers)|
+|  | Finalised the approach and the [Emotions](#emotions) to detect|
+|  | Collected final Dataset|
+|  | Face Detection|
+|  | Several Models Trained|
 
 ## Dataset 
 [Google Drive link](https://drive.google.com/file/d/1U1F9L56AX-Vnk0EG4FZWowh9WEIBH_M4/view?usp=sharing)
