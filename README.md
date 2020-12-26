@@ -11,10 +11,11 @@
 | 18-10| [Course-2](#courses) |
 | 24-10| [Course-3](#courses) |
 | 4-11 | Read [Papers](#papers)|
-|  | Finalised the approach and the [Emotions](#emotions) to detect|
-|  | Dataset Selection and Processing|
-|  | Face Detection|
-|  | Model Training|
+| 11-11 | Finalised the approach and the [Emotions](#emotions) to detect|
+| 14-11 | Selection of Dataset and processing|
+| 22-11 | Face Detection using Harcascade|
+| 29-11 | Dataset augmented and finalised|
+| 22-12 | Model Training |
 
 ## Dataset 
 [Google Drive link](https://drive.google.com/file/d/1U1F9L56AX-Vnk0EG4FZWowh9WEIBH_M4/view?usp=sharing)
