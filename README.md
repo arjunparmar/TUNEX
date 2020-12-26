@@ -17,6 +17,16 @@
 | 29-11 | Dataset augmented and finalised|
 | 22-12 | Model Training |
 
+## Emotions
+
+- Afraid
+- Angry
+- Disgust
+- Happy
+- Neutral
+- Sad
+- Suprised
+
 ## Dataset 
 [Google Drive link](https://drive.google.com/file/d/1U1F9L56AX-Vnk0EG4FZWowh9WEIBH_M4/view?usp=sharing)
 
