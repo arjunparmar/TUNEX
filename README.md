@@ -12,9 +12,9 @@
 | 24-10| [Course-3](#courses) |
 | 4-11 | Read [Papers](#papers)|
 |  | Finalised the approach and the [Emotions](#emotions) to detect|
-|  | Collected final Dataset|
+|  | Dataset Selection and Processing|
 |  | Face Detection|
-|  | Several Models Trained|
+|  | Model Training|
 
 ## Dataset 
 [Google Drive link](https://drive.google.com/file/d/1U1F9L56AX-Vnk0EG4FZWowh9WEIBH_M4/view?usp=sharing)
