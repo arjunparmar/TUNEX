@@ -2,3 +2,7 @@
 model_trained
 images
 *.pickle
+genres_original
+images_original
+*.png
+*.csv
