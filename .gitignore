@@ -6,3 +6,21 @@ genres_original
 images_original
 *.png
 *.csv
+.vscode
+__pycache__
+*.zip
+
+# model folder
+6/
+
+# songs folder
+songs/
+
+# virtualenv
+**/site-packages/
+**/bin
+
+
+# Databases
+
+*.sqlite
