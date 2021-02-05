@@ -1,9 +1,24 @@
 from django.shortcuts import render
 import cv2
 import threading
+from django.http import StreamingHttpResponse
 # Create your views here.
 def home(request):
     return render(request, 'index.html', {})
+
+
+def capture_from_cam():
+    cap = cv2.VideoCapture(0)
+    currentFrame = 0
+    while True:
+
+        ret, frame = cap.read()
+
+        frame = cv2.flip(frame, 1)
+        currentFrame += 1
+
+def addFaces(request):
+    
 
 
 class VideoCapture(object):
@@ -42,3 +57,6 @@ def gen(camera):
 # to implement a webcam
 
 
+def livefe(request):
+    try:
+        return StreamingHttpResponse(capture_from_cam())
