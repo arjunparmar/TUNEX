@@ -1,1 +1,2 @@
-# Interating Emotion Detection with Song Recomendation
+# Integrating Emotion Detection with Song Recomendation
+
