@@ -6,4 +6,5 @@
 
 > The video input used here in `finalIntegrate.ipynb` is `deeps.mp4` which outputs the happy sentiment.
 
-### The final code that captures the live feed for 10 seconds and plays a song, all in continuous loop, is `finalVideoTest.ipynb`
+#### 
+#### The final code that captures the live feed for 10 seconds and plays a song, all in continuous loop, is [finalVideoTest.ipynb](finalVideoTest.ipynb)
