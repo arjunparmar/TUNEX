@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+{% load static%}
+
+<html>
+<head>
+    <title>TUNEX</title>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+</head>
+<body>
+<!-- Header -->
+
+<header id="header">
+    <div class="inner">
+        <a href="{% url 'home' %}" class="logo">
+        <nav id="nav">
+            <a href="{% url 'home' %}">Home</a>
+			<a href="{% url 'predict' %}">Predict</a>
+        </nav>
+    </div>
+</header>
+	<section id="banner">
+				<div class="inner">
+					<header>
+						<h1>TUNEX</h1>
+						<p>Let's recommend some songs, yeah!</p>
+					</header>
+
+					<div class="flex ">
+
+						<div>
+							<span class="icon fa-camera"></span>
+							<h3>Input</h3>
+							<p></p>
+						</div>
+
+						<div>
+							<span class="icon fa-desktop"></span>
+							<h3>Predict</h3>
+						</div>
+
+						<div>
+							<span class="icon fa-hand-peace-o"></span>
+							<h3>Recognise</h3>
+							<p></p>
+						</div>
+
+					</div>
+
+				</div>
+			</section>
+        {% block body_block %}
+        {% endblock %}
+			<footer id="footer">
+				<div class="inner">
+
+					<h3>GET IN TOUCH</h3>
+					<div class="flex ">
+					<style>
+					body {margin:0;}
+
+					.icon-bar {
+  						width: 100%;
+  						background-color: #555;
+  						overflow: auto;
+						}
+
+.icon-bar a {
+  float: left;
+  width: 33.33%;
+  text-align: center;
+  padding: 12px 0;
+  transition: all 0.3s ease;
+  color: white;
+  font-size: 36px;
+}
+
+.icon-bar a:hover {
+  background-color: #000;
+}
+
+.active {
+  background-color: #4CAF50;
+}
+</style>
+<body>
+
+<div class="icon-bar">
+  <a href="https://www.facebook.com/drishti.nitsurat/"><i class="icon fa-facebook"></i></a> 
+  <a href="https://www.linkedin.com/company/drishti-nitsurat"><i class="fa fa-linkedin"></i></a> 
+  <a href="http://svnit.ac.in/stu_chap/drishti/?fbclid=IwAR260bVP3Qnrx7WUKhcHqu9QeyHqsXv9VuD8AcbJ_ityFiFJxNPqXAkD3wc"><i class="fa fa-globe"></i></a>
+
+</div>
+			
+
+					</div>
+
+			</footer>
+
+
+		<!-- Scripts -->
+		
+			<script src="{% static 'js/jquery.min.js' %}"></script>
+			<script src="{% static 'js/skel.min.js' %}"></script>
+			<script src="{% static 'js/util.js' %}"></script>
+			<script src="{% static 'js/main.js' %}"></script>
+
+	</body>
+</html>

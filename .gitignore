@@ -24,3 +24,7 @@ songs/
 # Databases
 
 *.sqlite
+
+
+#Staticfiles
+**/static
