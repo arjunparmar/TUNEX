@@ -19,16 +19,19 @@
 
 ## Emotions
 
-- Afraid
-- Angry
-- Disgust
-- Happy
-- Neutral
-- Sad
-- Suprised
+- Afraid :fearful:
+- Angry :angry:
+- Disgust :unamused:
+- Happy :smiley:
+- Neutral :neutral_face:
+- Sad :sob:
+- Suprised :open_mouth:
 
 ## Dataset 
 [Google Drive link](https://drive.google.com/file/d/1U1F9L56AX-Vnk0EG4FZWowh9WEIBH_M4/view?usp=sharing)
+
+## Demo
+[Facebook Post](https://www.facebook.com/100005205645669/videos/1636682486515257/)
 
 <details>
 <summary><b> Courses</b></summary>
@@ -80,3 +83,5 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
 
 </details>
+
+Made with :heart: by DRISHTI-AI/ML Team.
