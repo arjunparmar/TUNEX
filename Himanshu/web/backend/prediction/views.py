@@ -8,7 +8,7 @@ from django.core.files import File
 #libraries existing in the project
 from .models import Image
 from .forms import ImageForm, TempForm
-from backend.backend.settings import BASE_DIR
+from backend.settings import BASE_DIR
 
 # Standard Libraries
 import os
@@ -90,6 +90,8 @@ def predict_image(image_array, category, name_image):
 
 
 def form_view(request):
+    flag = 0
+    context_dict = {}
     upload_image = Image()
     modified_image = Image()
     temp_form = TempForm({'recommendSong': 'no'})
@@ -118,8 +120,38 @@ def form_view(request):
             modified_image.uploads = img_obj.uploads
             print("next step")
             modified_image.save()
-            ontext_dict = {'form': image_form, 'temp_form': temp_form, 'prediction': x1, 'image_show': modified_image}
-            
+            context_dict = {'form': image_form, 'temp_form': temp_form, 'prediction': x1, 'image_show': modified_image}
+        else:
+            image_form = ImageForm(request.POST, request.FILES) 
+            if image_form.is_valid():
+                print('inside form.valid function')
+                category = image_form.cleaned_data['category']
+                if request.FILES.get("uploads", None) is not None:
+                    print("image prese")
+                    test_image = request.FILES["uploads"]
+                    image_byte = test_image.read()
+                    target_image = PIL.Image.open(io.BytesIO(image_byte))
+                    name_image = image_form.cleaned_data['uploads'].name
+                    flag = 1
+                    if 'uploads' in request.FILES:
+                        print('inside function')
+                        upload_image.category = image_form.cleaned_data['category']
+                        upload_image.uploads = request.FILES['uploads']
+                        upload_image.save()
+                        print('Saved image -> {}'.format(upload_image.uploads.name))
+                        upload_obj = Image.objects.filter().order_by('-id')[0]
+                        image_id = upload_obj.id
+                        print("image id = {}".format(image_id))
+                        context_dict = {'form': image_form, 'temp_form': temp_form, 'image_show': upload_image}
+                else:
+                    print(image_form.errors)
+
+    else:
+        image_form = ImageForm()
+        context_dict = {'form': image_form, 'temp_form': temp_form}
+        print(context_dict)
+    return render(request, 'statRes.html', context=context_dict)
+
 
     
 
@@ -158,7 +190,7 @@ class VideoCapture(object):
         
 
 
-cam = VideoCapture()
+#cam = VideoCapture()
 
 
 def gen(camera):

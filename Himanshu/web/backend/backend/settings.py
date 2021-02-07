@@ -129,3 +129,7 @@ STATICFILES_DIRS = [
     '/var/www/static'
     
 ]
+
+
+MEDIA_ROOT = MEDIA_DIR
+MEDIA_URL = 'media/'

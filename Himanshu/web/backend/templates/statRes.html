@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'css/statres.css' %}"/> 
+{% endblock %}
+
+{% block content %}
+
+<section id="three" class="wrapper align-center">
+    <div class="inner">
+        <div class="flex flex-2">
+            <article>
+                <h2><b>CHOOSE CATEGORY</b></h2>
+
+               <form method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <button typ="submit">Upload here</button>
+                </form>
+
+                {% if image_show %}
+                    <img src="{{ image_show.uploads.url }}" alt="original image">
+                    <br>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    {{ temp_form.as_p }}
+                    <input type="submit" name="recommend" value="Recommend" style="margin-top: 0px;">
+                </form>
+                {% if prediction%}
+                
+                <p style="font-size: 30px;"><b>This is {{ prediction }} </b> </p>
+                {% endif %}
+                    
+
+            </article>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
