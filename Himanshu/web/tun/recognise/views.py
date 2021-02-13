@@ -3,11 +3,12 @@ from django.shortcuts import render
 from django.conf import settings
 from django.core.files.base import ContentFile
 from django.core.files import File
+from django.http import StreamingHttpResponse
 
 #Libraries of ourselves
 from .form import ImageForm
 from .models import Image
-
+from .camera import VideoCamera
 
 # Standard Libraries
 import os
@@ -28,11 +29,7 @@ EMOTIONS = ["afraid", "angry", "disgust", "happy", "neutral", "sad", "surprised"
 HF_PATH = 'haarcascade_frontalface_default.xml'
 try:
 
-<<<<<<< HEAD
     HF = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-=======
-    HF = cv2.CascadeClassifier(HF_PATH)
->>>>>>> f6324baa2c856dabfff03a6f23c0a927843ad77e
 except Exception as e:
     print("HF error is {}".format(e))
 
@@ -133,3 +130,19 @@ def form(request):
         print("Image is {}".format(img))
 
     return render(request, "predict.html", {"img":img,"form":form})
+
+cam = VideoCamera()
+
+
+def gen(camera):
+    while True:
+        frame = cam.get_frame()
+        yield(b'--frame\r\n'
+              b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+
+
+def livefeed(request):
+    try:
+        return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
+    except Exception as e:  # This is bad! replace it with proper handling
+        print(e)
