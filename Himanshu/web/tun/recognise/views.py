@@ -146,3 +146,6 @@ def livefeed(request):
         return StreamingHttpResponse(gen(VideoCamera()), content_type="multipart/x-mixed-replace;boundary=frame")
     except Exception as e:  # This is bad! replace it with proper handling
         print(e)
+
+def showlive(request):
+    return render(request, 'live.html')
