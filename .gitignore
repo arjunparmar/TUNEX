@@ -22,10 +22,13 @@ songs/
 **/site-packages/
 **/bin
 
+# swap files
+*.swp
+
 
 # Databases
 
-*.sqlite
+**.sqlite3
 
 
 #Staticfiles

@@ -25,10 +25,10 @@ from tensorflow.keras.models import load_model
 #Constants
 IMG_SIZE = 48
 EMOTIONS = ["afraid", "angry", "disgust", "happy", "neutral", "sad", "surprised"]
-
+HF_PATH = 'haarcascade_frontalface_default.xml'
 try:
 
-    HF = cv2.CascadeClassifier('/home/hp77/Documents/github/TUNEX/Himanshu/web/tun/haarcascade_frontalface_default.xml')
+    HF = cv2.CascadeClassifier(HF_PATH)
 except Exception as e:
     print("HF error is {}".format(e))
 
