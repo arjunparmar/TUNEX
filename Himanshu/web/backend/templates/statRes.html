@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-
 {% block styles %}
 <link rel="stylesheet" href="{% static 'css/statres.css' %}"/> 
 {% endblock %}
@@ -11,7 +10,7 @@
     <div class="inner">
         <div class="flex flex-2">
             <article>
-                <h2><b>CHOOSE CATEGORY</b></h2>
+                <h2><b> </b></h2>
 
                <form method="post" enctype="multipart/form-data">
                     {% csrf_token %}
@@ -20,7 +19,7 @@
                 </form>
 
                 {% if image_show %}
-                    <img src="{{ image_show.uploads.url }}" alt="original image">
+                    <img src="{{image_show.uploads.url}}" alt="original image">
                     <br>
                 {% endif %}
 

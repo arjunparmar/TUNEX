@@ -1,6 +1,8 @@
 .ipynb_checkpoints
 model_trained
 images
+*.jpeg
+*.JPG
 *.pickle
 genres_original
 images_original

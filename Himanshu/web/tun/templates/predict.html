@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+<p> Enter Image for testing</p>
+<form action="{% url 'form'%}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit"> Upload</button>
+</form>
+
+
+{% if obj %}
+<h3> Successfully uploaded: {{image_obj.caption}} </h3>
+<img src="{{ obj.image.url}}" alt="image" height="250px" width="250px">
+<p>Prediction is {{ prediction }}</p>
+<img src="{{ modified_image.image.url }}" alt="image" height="250px" width="250px">
+{% endif %}
+
+<hr>
+
+{% if img.image %}
+
+<img src="{{img.image.url}}" alt="testing">
+
+{% endif %}
+</div>
+
+{% endblock %}

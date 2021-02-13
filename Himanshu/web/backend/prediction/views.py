@@ -94,13 +94,14 @@ def form_view(request):
     context_dict = {}
     upload_image = Image()
     modified_image = Image()
-    temp_form = TempForm({'recommendSong': 'no'})
+    temp_form = TempForm({'recommend': 'no'})
     image_form = ImageForm()
     if request.method=="POST":
         temp_form = TempForm(request.POST)
-        t_value=request.POST.get('recommendSong')
+        t_value=request.POST.get('recommend')
 
         if t_value == 'yes':
+            print("YEs it is happening")
             img_obj = Image.objects.filter().order_by('-id')[0]
             print("image object = {}".format(img_obj))
             print("image object image = {}".format(img_obj.uploads))
@@ -141,15 +142,21 @@ def form_view(request):
                         print('Saved image -> {}'.format(upload_image.uploads.name))
                         upload_obj = Image.objects.filter().order_by('-id')[0]
                         image_id = upload_obj.id
+                        print("Upload obj is {} ".format(upload_obj))
+
                         print("image id = {}".format(image_id))
-                        context_dict = {'form': image_form, 'temp_form': temp_form, 'image_show': upload_image}
+                        print("Image show is {} and type is {} and URL is {} ".format(upload_image.uploads, type(upload_image), upload_image.uploads.url))
+                        context_dict = {'form': image_form, 'temp_form': temp_form, 'image_show': upload_image }
                 else:
+                    print("These are image errors")
                     print(image_form.errors)
 
     else:
         image_form = ImageForm()
         context_dict = {'form': image_form, 'temp_form': temp_form}
         print(context_dict)
+    print("This is the last step")
+    print("Context dict is {}".format(context_dict))
     return render(request, 'statRes.html', context=context_dict)
 
 
