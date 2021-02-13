@@ -67,7 +67,7 @@ def predict_image(image_array, name_image):
             print("Before roi")
             roi = img[y:y+h, x:x+w]
             print("Afer roi")
-            model_path = os.path.join(settings.BASE_DIR, '6/')
+            model_path = os.path.join(settings.BASE_DIR, '6')
             model=load_model(model_path, compile=False)
             print('Image shape is {}'.format(img.shape))
             prediction = model.predict([prepare(roi)])
