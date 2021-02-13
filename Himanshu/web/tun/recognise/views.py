@@ -95,6 +95,53 @@ def predict_image(image_array, name_image):
     except Exception as e:
         print(e)
 
+def predict_video(image_array, name_image):
+    label="Nothing predicted"
+    try:
+        print('Inside predict_image shape: {}'.format(image_array.shape))
+        gray = cv2.cvtColor(image_array, cv2.COLOR_BGR2GRAY)
+        img = image_array.copy()
+        #print("img is {}".format(img))
+        faces = HF.detectMultiScale(gray, scaleFactor=1.1, minNeighbors=5, minSize=(30, 30), flags=cv2.CASCADE_SCALE_IMAGE)
+        print("faces is {}".format(faces))
+        try:
+            print("Before faces")
+            faces = sorted(faces, reverse=True, key = lambda x: (x[2]-x[0]) *(x[3]-x[1]))[0]
+            print("After faces")
+            (x,y,w,h)=faces
+            print("After coordinatese")  
+            img = cv2.rectangle(img,(x,y),(x+w,y+h),(220,40,50),2)
+            print("Before roi")
+            roi = img[y:y+h, x:x+w]
+            print("Afer roi")
+            model_path = os.path.join(settings.BASE_DIR, '6')
+            model=load_model(model_path, compile=False)
+            print('Image shape is {}'.format(img.shape))
+            prediction = model.predict([prepare(roi)])
+            
+            preds = prediction[0]
+            print("prediction is {}".format(preds))
+            print("max index is {}".format(preds.argmax()))
+            label = EMOTIONS[preds.argmax()]
+            print("label is {}".format(label))
+            cv2.rectangle(img,(x,y+h+10),(x+w,y+h+70),(220,40,50),-2)
+            cv2.putText(img,label, (x+10, y+h+50), cv2.FONT_HERSHEY_SIMPLEX, 1.3, (225, 225, 225), 3)
+            cv2.imwrite('result.jpeg', img)
+        except Exception as e:
+            print("Something happened during prediction")
+            print(e)
+
+        
+        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        
+        _, buffer_img = cv2.imencode('.jpeg', img)
+        f_img = buffer_img.tobytes()
+        f1 = ContentFile(f_img)
+        image_file = File(f1, name=name_image)
+        return img, label
+    except Exception as e:
+        print(e)
+
 
 
 def form(request):
@@ -137,8 +184,13 @@ cam = VideoCamera()
 def gen(camera):
     while True:
         frame = cam.get_frame()
+        # print(frame)
+        m_image, lab =predict_video(frame, "result")
+        print(lab)
+        ret, m_image = cv2.imencode('.jpg', m_image)
+        m_image = m_image.tobytes()
         yield(b'--frame\r\n'
-              b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+              b'Content-Type: image/jpeg\r\n\r\n' + m_image + b'\r\n\r\n')
 
 
 def livefeed(request):

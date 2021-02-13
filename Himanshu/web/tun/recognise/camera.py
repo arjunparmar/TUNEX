@@ -12,8 +12,8 @@ class VideoCamera(object):
 
     def get_frame(self):
         image = self.frame
-        ret, jpeg = cv2.imencode('.jpg', image)
-        return jpeg.tobytes()
+        # ret, jpeg = cv2.imencode('.jpg', image)
+        return image
 
     def update(self):
         while True:
