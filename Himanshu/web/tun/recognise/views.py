@@ -33,7 +33,8 @@ try:
 except Exception as e:
     print("HF error is {}".format(e))
 
-
+model_path = os.path.join(settings.BASE_DIR, '6')
+model=load_model(model_path, compile=False)
 
 # Create your views here.
 
@@ -67,8 +68,6 @@ def predict_image(image_array, name_image):
             print("Before roi")
             roi = img[y:y+h, x:x+w]
             print("Afer roi")
-            model_path = os.path.join(settings.BASE_DIR, '6')
-            model=load_model(model_path, compile=False)
             print('Image shape is {}'.format(img.shape))
             prediction = model.predict([prepare(roi)])
             
@@ -114,8 +113,6 @@ def predict_video(image_array, name_image):
             print("Before roi")
             roi = img[y:y+h, x:x+w]
             print("Afer roi")
-            model_path = os.path.join(settings.BASE_DIR, '6')
-            model=load_model(model_path, compile=False)
             print('Image shape is {}'.format(img.shape))
             prediction = model.predict([prepare(roi)])
             
@@ -132,7 +129,7 @@ def predict_video(image_array, name_image):
             print(e)
 
         
-        img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
+        # img = cv2.cvtColor(img, cv2.COLOR_RGB2BGR)
         
         _, buffer_img = cv2.imencode('.jpeg', img)
         f_img = buffer_img.tobytes()
@@ -187,6 +184,7 @@ def gen(camera):
         # print(frame)
         m_image, lab =predict_video(frame, "result")
         print(lab)
+        # m_image = cv2.cvtColor(m_image, cv2.COLOR_RGB2BGR)
         ret, m_image = cv2.imencode('.jpg', m_image)
         m_image = m_image.tobytes()
         yield(b'--frame\r\n'
