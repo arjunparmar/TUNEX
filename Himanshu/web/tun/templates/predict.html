@@ -4,11 +4,11 @@
 
 <div class="container">
 
-<p> Enter Image for testing</p>
+<h1 >Enter Image for testing</h1> 
 <form action="{% url 'form'%}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
 {{ form.as_p }}
-<button type="submit"> Upload</button>
+<button type="submit" class="btn btn-lg btn-success"> Upload</button>
 </form>
 
 

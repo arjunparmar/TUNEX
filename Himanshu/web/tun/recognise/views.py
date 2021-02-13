@@ -28,7 +28,7 @@ EMOTIONS = ["afraid", "angry", "disgust", "happy", "neutral", "sad", "surprised"
 
 try:
 
-    HF = cv2.CascadeClassifier('/home/hp77/Documents/github/TUNEX/Himanshu/web/tun/haarcascade_frontalface_default.xml')
+    HF = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 except Exception as e:
     print("HF error is {}".format(e))
 
