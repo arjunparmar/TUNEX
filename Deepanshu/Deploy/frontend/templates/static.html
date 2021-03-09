@@ -1,0 +1,47 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}
+    Static TUNEX
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/staticpage.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="topsection">
+        <div class="statictitle">
+            <span>Static</span>
+        </div>
+        <div class="homebuttonstatic">
+            <a href="/"><i class="icofont-ui-home"></i></a>
+        </div>
+    </div>
+
+    <div class="uploadsection">
+        <div class="uploadsectionleft">
+            <div class="uploadform">
+                <form class="uploadimage" action="uploadimage" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <label for="staticimage">Select the image to upload :</label>
+                    <input type="file" name="staticimage" id="staticimage" accept="image/*">
+                    <input type="submit" value="Upload">
+                </form>
+            </div>
+            <div class="showimage">
+
+            </div>
+        </div>
+
+        <div class="uploadsectionright">
+            <div class="showemotion">
+
+            </div>
+        </div>
+    </div>
+
+    <div class="songsection">
+
+    </div>
+{% endblock %}

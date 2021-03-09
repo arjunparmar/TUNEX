@@ -1,0 +1,120 @@
+{% extends "./base.html" %}
+{% load static %}
+
+{% block title %}
+    TUNEX
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/homestyle.css' %}">
+{% endblock %}
+
+{% block main %}
+    <div class="navbar" id="navbar">
+        <div class="navtext">
+            <a href="" class="currentnav">HOME</a>
+            <a href="statics/">STATIC</a>
+            <a href="live/">LIVE</a>
+            <a href="about/">ABOUT</a>
+        </div>
+    </div>
+
+
+    <div class="section1" id="section1">
+        <div class="maintext">
+            <div class="textbranch">
+                <div class="hometitle">
+                    <p>TUNEX</p>
+                </div>
+                <div class="hometitletag">
+                    <p>Tunes for Expressions!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% load static %}
+    <div class="section2">
+        <div class="disperseleft">
+            <!-- <img src="{% static 'images/disperseleft.png' %}" alt="Left Dispersion Effect"> -->
+        </div>
+
+        <div class="invtop">
+            <!-- <img src="{% static 'images/dit.png' %}" alt="Double Inverted Comma Start"> -->
+        </div>
+
+        <div class="welcometext">
+            <div class="description">
+                <p>
+                    <bold style="color: rgb(126, 8, 66);">Music</bold> is a powerful language to <bold style="color: rgb(30, 7, 81);">express our</bold> <br/>
+                    <bold style="color: rgb(30, 7, 81);">feelings</bold> and in many cases is used as <bold style="color: rgb(220, 77, 14);">therapy</bold> to deal <br/>
+                    with tough moments in our lives.
+                </p>
+                <br/>
+                <p>
+                    Our <bold style="color: rgb(242, 10, 65);">moods</bold> sometimes <bold style="color: rgb(12, 86, 178);">unconsciously define</bold> the <br/>
+                    <bold style="color: rgb(30, 7, 81);">genre</bold> of music we listen to.
+                </p>
+            </div>
+        </div>
+
+        <div class="invbottom">
+            <!-- <img src="{% static 'images/dib.png' %}" alt="Double Inverted Comma End"> -->
+        </div>
+
+        <div class="disperseright">
+            <!-- <img src="{% static 'images/disperseright.png' %}" alt="Right Dispersion Effect"> -->
+        </div>
+    </div>
+
+
+    <div class="section3">
+        <div class="abouttunex">
+            <div class="abouttunextext">
+                <p>Get the <span style="color: rgb(45, 190, 220);">Songs</span> <br/>
+                    recommended for <br/>
+                    <span style="color:rgb(250, 170, 35);">yourself</span>, based on <br/>
+                    your current <span style="color: rgb(240, 45, 65);">mood</span> <br/>
+                    and emotion.</p>
+                <div class="homerightarrow"></div>
+            </div>
+        </div>
+
+        <div class="staticlink">
+            <div class="staticlinkbox1" id="staticlinkbox1" onmouseover="showStatic(id)" onmouseout="hideStatic(id)">
+                <div class="staticlinktext1">
+                    <h1>Static <br/> Image</h1>
+                </div>
+            </div>
+            <div class="staticlinkbox2" id="staticlinkbox2" onmouseover="showStatic(id)" onmouseout="hideStatic(id)">
+                <div class="staticlinktext2">
+                    <p><span>Upload</span> your image in a particular mood, or <span>capture</span> your image throuh webcam.<br/>
+                        At last get songs to <span>listen</span>, based on the mood recognised.</p>
+                    <div class="staticlinkbutton">
+                        <a href="statics/">Get Songs!</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="livelink">
+            <div class="livelinkbox1" id="livelinkbox1" onmouseover="showLive(id)" onmouseout="hideLive(id)">
+                <div class="livelinktext1">
+                    <h1>WebCam <br/> Feed</h1>
+                </div>
+            </div>
+            <div class="livelinkbox2" id="livelinkbox2" onmouseover="showLive(id)" onmouseout="hideLive(id)">
+                <div class="livelinktext2">
+                    <p><span>Realtime</span> mood recognisation and <span>song recommendation</span>, through live webcam <span>video</span> feed.</p>
+                    <div class="livelinkbutton">
+                        <a href="live/">Get Songs!</a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section4">
+
+    </div>
+{% endblock %}

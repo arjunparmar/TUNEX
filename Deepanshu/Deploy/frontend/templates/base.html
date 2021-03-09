@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="{% static 'styles/allstyle.css' %}">
+
+    {% block styles %}{% endblock %}
+
+    <link rel="stylesheet" href="{% static 'icofont/icofont.min.css' %}">
+
+    <title>
+        {% block title %}{% endblock %}
+    </title>
+
+    <script type="text/javascript" src="{% static 'script/tunex.js' %}"></script>
+
+</head>
+
+<body>
+
+    {% block main %}{% endblock %}
+
+    <div class="infosection">
+
+    </div>
+
+    <div class="footer">
+        Copyright &copy; 2021 Deepanshu Prasad
+    </div>
+    
+</body>
+
+</html>
