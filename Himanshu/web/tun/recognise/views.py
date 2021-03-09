@@ -14,9 +14,12 @@ from .camera import VideoCamera
 import os
 import threading
 import io
+import random
+import json
 
 # 3rd party libraries
 import cv2
+import requests as rq
 import PIL
 import numpy as np
 import tensorflow as tf
@@ -26,7 +29,20 @@ from tensorflow.keras.models import load_model
 #Constants
 IMG_SIZE = 48
 EMOTIONS = ["afraid", "angry", "disgust", "happy", "neutral", "sad", "surprised"]
+
 HF_PATH = 'haarcascade_frontalface_default.xml'
+BASE_URL = "https://api.spotify.com/v1/recommendations"
+MARKET = "IN" #market from which songs are recommended
+SA = "4NHQUGzhtTLFvgF5SZesLK" #seed artist for spotify
+ST = "0c6xIDDpzE81m2q797ordA" #seed track for spotify
+HEADER = {
+    "content-Type": "application/json",
+    "authorization": "Bearer BQAikcOWNk4aibnPWeUlsdFBTy0xxinLnUVMFpOuP0is_PRTCPWcf-i6H-LptzAPF47qM7pORdYhq3ReyF1N4lTS8r31SMzu1HfuASUbhscOj3PuWBobXySRn8K5p_fu-OL_vF1FoiV_xajc0dFDZJ64pFxD6wOoOE0"
+}
+
+
+
+
 try:
 
     HF = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
@@ -141,8 +157,33 @@ def predict_video(image_array, name_image):
 
 
 
+
+def process_json(json):
+    artists_l = []
+    songs = []
+    urls = []
+    s_images = []
+    # print(json.keys())
+    for entry in json:
+        #print("entry is {}".format(entry))
+        #print("keys of album are {}".format(entry.keys()))
+        print(entry["artists"][0].keys())
+        if entry["preview_url"] != None: 
+            artists_l.append(entry["artists"][0]["name"])
+            songs.append(entry["name"])
+            urls.append(entry["preview_url"])
+            s_images.append(entry["album"]["images"][0]["url"])
+    print("artists are {} songs are {} and urls are {}".format(artists_l, songs, urls))
+    return zip(artists_l, songs, urls, s_images)
+
+        
+
 def form(request):
     modified_image = Image()
+    result_dic = {}
+    genre=""
+    img=""
+
     if request.method=="POST":
         form=ImageForm(data=request.POST, files=request.FILES)
         if form.is_valid():
@@ -163,8 +204,20 @@ def form(request):
             modified_image.image = image_file
             print("next step")
             modified_image.save()
+            genre = egmap(x1)
+            url = BASE_URL+'?limit=7&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
+            r = rq.get(url, headers=HEADER)
+            print(r.status_code)
+            if r.json():
+                json_text = json.loads(r.text)
+                # print(json_text)
+                result_dic = process_json(json_text["tracks"])
+            else:
+                print("Bad Request")
+            
+            print("result is {}".format(result_dic))
 
-            return render(request, "predict.html", {"obj":obj, "prediction":x1, "modified_image":modified_image})
+            return render(request, "predict.html", {"obj":obj, "prediction":x1, "modified_image":modified_image, "result_dic": result_dic})
         
     
     else:
@@ -175,6 +228,35 @@ def form(request):
 
     return render(request, "predict.html", {"img":img,"form":form})
 
+def egmap(emotionout):
+    '''
+    link between genre and emotion
+    '''
+    genrechosen=""
+    afraidlist = ["hiphop"]
+    angrylist = ["rock", "metal"]
+    disgustlist = ["hiphop", "jazz"]
+    happylist = ["pop", "disco"]
+    neutrallist = ["reggae", "classical"]
+    sadlist = ["blues", "classical", "country"]
+    surprisedlist = ["disco"]
+    
+    if emotionout is 'Afraid':
+        genrechosen = random.choice(afraidlist)
+    if emotionout is 'Angry':
+        genrechosen = random.choice(angrylist)
+    if emotionout is 'Disgust':
+        genrechosen = random.choice(disgustlist)
+    if emotionout is 'Happy':
+        genrechosen = random.choice(happylist)
+    if emotionout is 'Neutral':
+        genrechosen = random.choice(neutrallist)
+    if emotionout is 'Sad':
+        genrechosen = random.choice(sadlist)
+    if emotionout is 'Surprise':
+        genrechosen = random.choice(surprisedlist)
+    
+    return genrechosen
 cam = VideoCamera()
 
 

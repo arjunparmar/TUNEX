@@ -17,6 +17,17 @@
 <img src="{{ obj.image.url}}" alt="image" height="250px" width="250px">
 <p>Prediction is {{ prediction }}</p>
 <img src="{{ modified_image.image.url }}" alt="image" height="250px" width="250px">
+
+{% for a, s, u, i in result_dic %}
+<div>
+<ul>
+<li><img src="{{ i }}"/> {{s}}</li>
+<li>{{a}}</li>
+<li><a href="{{ u }}" target="_blank">Preview</a></li>
+</ul>
+</div>
+{% endfor %}
+
 {% endif %}
 
 <hr>
