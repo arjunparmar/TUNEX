@@ -1,0 +1,146 @@
+{% extends 'base.html' %}
+
+
+{% block style %}
+<style>
+    body{
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+    .spotify-songs{
+        height:100vh;
+        width: 100%;
+    }
+    .spotify-songs-title{
+        height:22vh;
+        width:100%;
+        padding-left: 5%;
+        padding-top: 6vh;
+        background-color: rgb(10, 24, 30);
+    }
+    .spotify-songs-title span{
+        font-family: sans-serif;
+        font-size: 6vh;
+        font-weight:bold;
+        color: rgb(251, 252, 255);
+    }
+    .all-song-cards{
+        height:55vh;
+        width: 90%;
+        margin-left: 5%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .single-card{
+        width: 16%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        margin-right: 3%;
+        border-radius: 10px;
+    }
+    .song-art img{
+        width: 100%;
+        height: auto;
+        border-radius: 10px 10px 0 0;
+    }
+    .song-name{
+        height: 6vh;
+        text-align: center;
+        padding: 6% 7% 2% 7%;
+        font-size: 2.5vh;
+        font-weight:bold;
+        overflow-y: hidden;
+    }
+    .song-artist{
+        text-align: center;
+        padding: 1% 8% 4% 8%;
+        font-size: 1.8vh;
+        color: gray;
+    }
+    .song-controls{
+        
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+<h1 >Enter Image for testing</h1>
+<form action="{% url 'form'%}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-lg btn-success"> Upload</button>
+</form>
+
+
+{% if obj %}
+<h3> Successfully uploaded: {{image_obj.caption}} </h3>
+<p>Prediction is {{ prediction }}</p>
+<img src="{{ modified_image.image.url }}" alt="image" height="500px" width="auto">
+
+</div>
+{% endif %}
+
+{% if result_dic %}
+<div class="spotify-songs">
+    <div class="spotify-songs-title">
+        <span>Here's some songs recommended for you...</span>
+    </div>
+    <div class="all-song-cards">
+        {% for a, s, u, i in result_dic %}
+        <div class="single-card">
+            <div class="song-art">
+                <img src="{{ i }}"/>
+            </div>
+            <div class="song-name">
+                {{ s }}
+            </div>
+            <div class="song-artist">
+                {{ a }}
+            </div>
+            <div class="song-controls">
+                <audio name="smedia" id="smedia">
+                    <source src="{{ u }}" type="audio/mpeg">
+                </audio>
+                <button class="play-button" id="play-button" onclick="playAudio()" type="button">
+                    Play
+                </button>
+                <button class="pause-button" id="pause-button" onclick="pauseAudio()" type="button">
+                    Pause
+                </button>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+<script>
+    var audio = document.getElementById("smedia");
+    var play = document.getElementById("play-button");
+    var pause = document.getElementById("pause-button");
+
+    function playAudio() {
+    audio.play();
+    play.style.display = "none";
+    pause.style.display = "block";
+    }
+
+    function pauseAudio() {
+    audio.pause();
+    pause.style.display = "none";
+    play.style.display = "block";
+    }
+</script>
+
+<div>
+{% if img.image %}
+
+<img src="{{img.image.url}}" alt="testing">
+
+{% endif %}
+</div>
+
+{% endblock %}
