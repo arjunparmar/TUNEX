@@ -37,9 +37,10 @@ SA = "4NHQUGzhtTLFvgF5SZesLK" #seed artist for spotify
 ST = "0c6xIDDpzE81m2q797ordA" #seed track for spotify
 HEADER = {
     "content-Type": "application/json",
-    "authorization": "Bearer BQAikcOWNk4aibnPWeUlsdFBTy0xxinLnUVMFpOuP0is_PRTCPWcf-i6H-LptzAPF47qM7pORdYhq3ReyF1N4lTS8r31SMzu1HfuASUbhscOj3PuWBobXySRn8K5p_fu-OL_vF1FoiV_xajc0dFDZJ64pFxD6wOoOE0"
+    "authorization": "Bearer BQCEfcdl_ZRuUVE1yXnQ1JTRP_xzNv-7rw-eeVEZPl27Oo431oT97EXiR-6xBXJnL5nNZBLE7wQqQ2NjFknV2nlHTdCPkcbd0BgbEhhtZkQ_6x0-py41A1ZzavkkJ-KFqptCrQeAmBRghLYpvikTgLsy4GkFL--bxKQ"
 }
 
+res = ""  #result that we will pass to the result page
 
 
 
@@ -152,6 +153,7 @@ def predict_video(image_array, name_image):
         f1 = ContentFile(f_img)
         image_file = File(f1, name=name_image)
         return img, label
+        res = label
     except Exception as e:
         print(e)
 
@@ -257,6 +259,8 @@ def egmap(emotionout):
         genrechosen = random.choice(surprisedlist)
     
     return genrechosen
+
+
 cam = VideoCamera()
 
 
@@ -280,4 +284,22 @@ def livefeed(request):
         print(e)
 
 def showlive(request):
-    return render(request, 'live.html')
+    submitb = request.POST.get('submit')
+    print(submitb)
+    context = {'submitb':submitb} if submitb else {'submitb': None}
+    return render(request, 'live.html', context)
+
+
+
+def liveres(request):
+    genre = egmap(res)
+    url = BASE_URL+'?limit=7&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
+    r = rq.get(url, headers=HEADER)
+    print(r.status_code)
+    if r.json():
+       json_text = json.loads(r.text)
+       # print(json_text)
+       result_dic = process_json(json_text["tracks"])
+    context = {'result_dic': result_dic, 'emotion': res}
+    return render(request, 'liveres.html', context)
+    

@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block content %}
+<p> So, you are feeling {{ res }}</p>
+<p> Here are some songs that may help you </p>
+
+{% for a, s, u, i in result_dic %}
+<div>
+<ul>
+<li><img src="{{ i }}"/> {{s}}</li>
+<li>{{a}}</li>
+<li><a href="{{ u }}" target="_blank">Preview</a></li>
+</ul>
+</div>
+{% endfor %}
+
+
+{% endblock %}

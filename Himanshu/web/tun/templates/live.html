@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% if not submitbutton %}
 <h3> This is the live feed </h3>
-<img src="{% url 'live' %}">
+<img src="{% url 'livefeed' %}">
+
+<a href="{% url 'liveres' %}"><button>Suggest some songs</button></a>
+{% endif %}
 {% endblock %}
