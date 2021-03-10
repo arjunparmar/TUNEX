@@ -1,0 +1,78 @@
+@font-face {
+  font-family: 'headliner45';
+  src: url('../fonts/headliner45/HeadlinerNo.45.eot');
+  src: url('../fonts/headliner45/HeadlinerNo.45.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/headliner45/HeadlinerNo.45.svg#HeadlinerNo.45') format('svg'),
+       url('../fonts/headliner45/HeadlinerNo.45.ttf') format('truetype'),
+       url('../fonts/headliner45/HeadlinerNo.45.woff') format('woff'),
+       url('../fonts/headliner45/HeadlinerNo.45.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/montserrat/montserrat-regular-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat/montserrat-regular-webfont.woff') format('woff'),
+         url('../fonts/montserrat/Montserrat-Regular.ttf') format('truetype');
+    font-weight: normal, 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/montserrat/montserrat-bold-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat/montserrat-bold-webfont.woff') format('woff'),
+         url('../fonts/montserrat/Montserrat-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'montserrat';
+    src: url('../fonts/montserrat/montserrat-medium-webfont.woff2') format('woff2'),
+         url('../fonts/montserrat/montserrat-medium-webfont.woff') format('woff'),
+         url('../fonts/montserrat/Montserrat-Medium.ttf') format('truetype');
+    font-weight: medium, 500;
+    font-style: normal;
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('../fonts/montserrat/semibold/Montserrat-SemiBold.eot');
+  src: url('../fonts/montserrat/semibold/Montserrat-SemiBold.eot?#iefix') format('embedded-opentype'),
+       url('../fonts/montserrat/semibold/Montserrat-SemiBold.svg#Montserrat-SemiBold') format('svg'),
+       url('../fonts/montserrat/semibold/Montserrat-SemiBold.ttf') format('truetype'),
+       url('../fonts/montserrat/semibold/Montserrat-SemiBold.woff') format('woff'),
+       url('../fonts/montserrat/semibold/Montserrat-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+
+*{
+    margin: 0;
+}
+
+body{
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.infosection{
+    width: 100%;
+    height: 40vh;
+    background-color: rgb(31, 34, 43);
+}
+
+.footer{
+    height: 8vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: rgb(249, 250, 255);
+    color: rgb(23, 27, 38);
+    font-size: 2.5vh;
+    font-family: monospace;
+}

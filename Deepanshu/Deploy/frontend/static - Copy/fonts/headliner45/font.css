@@ -1,0 +1,12 @@
+@font-face {
+  font-family: 'HeadlinerNo.45';
+  src: url('HeadlinerNo.45.eot');
+  src: url('HeadlinerNo.45.eot?#iefix') format('embedded-opentype'),
+       url('HeadlinerNo.45.svg#HeadlinerNo.45') format('svg'),
+       url('HeadlinerNo.45.ttf') format('truetype'),
+       url('HeadlinerNo.45.woff') format('woff'),
+       url('HeadlinerNo.45.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

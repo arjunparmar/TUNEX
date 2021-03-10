@@ -1,0 +1,41 @@
+.topsection{
+    height: 25vh;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+.topsection .statictitle{
+    margin-left: 5%;
+}
+
+.topsection .statictitle span{
+    font-size: 20vh;
+    font-weight: bold;
+    font-family: 'montserrat', sans-serif;
+
+}
+
+.homebuttonstatic{
+    margin-right: 10%;
+}
+
+.homebuttonstatic a{
+    font-size: 10vh;
+    text-decoration: none;
+    color: rgb(238, 35, 65);
+    transition: 0.02s;
+}
+
+.homebuttonstatic a:hover{
+    font-size: 11vh;
+    color: rgb(0, 0, 0);
+    transition: 0.1s;
+}
+
+.uploadsection{
+    height: 60vh;
+    width: 100%;
+}

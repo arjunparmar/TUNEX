@@ -1,0 +1,496 @@
+.navbar{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px 0 0 12px;
+    visibility: visible;
+    transition: 0.05s;
+    top: 2vh;
+    left: 68%;
+    width: 32%;
+    height: 7.4vh;
+    box-shadow: 0 0 15px rgba(0, 0, 5, 0.7);
+    background-color: rgba(33, 33, 54, 0.9);
+}
+
+.navtext .currentnav{
+    color: rgb(242, 10, 65);
+    text-shadow: 0 0 5px rgba(248, 12, 70, 0.5);
+    padding-left: 0;
+}
+
+.navtext a{
+    text-decoration: none;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 2.3vh;
+    letter-spacing: 0.065em;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    color: rgb(251, 252, 255);
+    margin-right: 2.5vw;
+    transition: 0.15s;
+}
+
+.navtext .currentnav:hover{
+    color: rgb(242, 10, 65);
+    text-shadow: 0 0 8px rgba(248, 12, 70, 0.5);
+}
+
+.navtext a:hover{
+    color: rgb(255, 156, 2);
+    letter-spacing: 0.15em;
+    text-shadow: 0 0 3px rgba(255, 160, 6, 0.35);
+    transition: 0.21s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section1{
+    width: 100%;
+    height: 70vh;
+    background-image: url("../images/homegirl.jpg");
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+.maintext{
+    width: 50%;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+}
+
+.hometitle{
+    font-family: 'headliner45', monospace;
+    font-size: 16vh;
+    text-align: center;
+    letter-spacing: 0.07em;
+    transition: 0.26s;
+    color: rgb(253, 252, 255);
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    margin-bottom: 1.5vh;
+}
+
+.hometitle:hover{
+    letter-spacing: 0.4em;
+    transition: 0.4s;
+    transition-timing-function: ease;
+}
+
+.hometitletag{
+    font-family: 'montserrat', sans-serif;
+    font-size: 6vh;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.06em;
+    color: rgb(253, 252, 255);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.6);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section2{
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(242, 248, 252);
+    box-shadow: 0 -25px 25px rgba(0, 0, 0, 0.6);
+}
+
+.disperseleft{
+    height: 34vh;
+    width: 15%;
+    background-image: url("../images/disperseleft.png");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.invtop{
+    height: 28vh;
+    width: 10%;
+    background-image: url("../images/dit.png");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+.welcometext{
+    width: 50%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.description p{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 1.35vw;
+    line-height: 1.4em;
+    letter-spacing: 0.04em;
+}
+
+.description p bold{
+    font-family: 'montserrat', sans-serif;
+    font-weight: bold;
+}
+
+.invbottom{
+    height: 28vh;
+    width: 10%;
+    background-image: url("../images/dib.png");
+    background-size: contain;
+    background-position: left;
+    background-repeat: no-repeat;
+}
+
+.disperseright{
+    height: 32vh;
+    width: 15%;
+    background-image: url("../images/disperseright.png");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section3{
+    width: 100%;
+    height: 60vh;
+    display: flex;
+    background-image: url("../images/homedj.jpg");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 45px 40px -20px rgba(0, 0, 0, 0.65);
+}
+
+.abouttunex{
+    height: 60vh;
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.abouttunextext{
+    padding-left: 15%;
+    padding-right: 15%;
+}
+
+.abouttunextext p{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 4vh;
+    font-weight: bold;
+    color: rgb(250, 252, 255);
+    line-height: 1.3em;
+    letter-spacing: 0.08em;
+    text-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+}
+
+.abouttunextext .homerightarrow{
+    margin-top: 5vh;
+    height: 14vh;
+    width: auto;
+    background-image: url("../images/rightarrow.png");
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.staticlink{
+    height: 60vh;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.staticlinkbox1{
+    position: absolute;
+    visibility: visible;
+    height: 40vh;
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/redstatic.png"),url("../images/redstatic2.png");
+    background-size: contain, contain;
+    background-position: left, right;
+    background-repeat: no-repeat, no-repeat;
+    background-color: rgba(250, 227, 231, 1);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.staticlinktext1 h1{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 6vh;
+    font-weight: bold;
+    color: rgb(3, 7, 13);
+    line-height: 1.2em;
+}
+
+.staticlinkbox2{
+    position: absolute;
+    visibility: hidden;
+    height: 45vh;
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgba(14, 3, 55, 0.6);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.staticlinkbox2 .staticlinktext2{
+    padding: 15%;
+}
+
+.staticlinkbox2 .staticlinktext2 p span{
+    font-weight: bold;
+}
+
+.staticlinkbox2 .staticlinktext2 p{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 2.5vh;
+    font-weight: medium;
+    line-height: 1.4em;
+    letter-spacing: 0.04em;
+    color: rgb(253, 249, 255);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.staticlinkbox2 .staticlinktext2 .staticlinkbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3.5vh;
+}
+
+.staticlinkbox2 .staticlinktext2 .staticlinkbutton a{
+    text-decoration: none;
+    font-family: 'montserrat', sans-serif;
+    font-size: 3vh;
+    font-weight: 600;
+    color: rgb(250, 42, 65);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid;
+    border-color: rgb(250, 42, 65);
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 12px;
+    transition: 0.02s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.staticlinkbox2 .staticlinktext2 .staticlinkbutton a:hover{
+    transition: 0.08s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(240, 37, 55);
+}
+
+.livelink{
+    height: 60vh;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.livelinkbox1{
+    position: absolute;
+    visibility: visible;
+    height: 40vh;
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("../images/bluelive.png"),url("../images/bluelive2.png");
+    background-size: contain, contain;
+    background-position: left, right;
+    background-repeat: no-repeat, no-repeat;
+    background-color: rgba(225, 233, 252, 1);
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.livelinktext1 h1{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 6vh;
+    font-weight: bold;
+    color: rgb(3, 7, 13);
+    line-height: 1.2em;
+}
+
+.livelinkbox2{
+    position: absolute;
+    visibility: hidden;
+    height: 45vh;
+    width: 27%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgba(25, 3, 14, 0.6);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+}
+
+.livelinkbox2 .livelinktext2{
+    padding: 15%;
+}
+
+.livelinkbox2 .livelinktext2 p span{
+    font-weight: bold;
+}
+
+.livelinkbox2 .livelinktext2 p{
+    text-align: center;
+    font-family: 'montserrat', sans-serif;
+    font-size: 2.5vh;
+    font-weight: medium;
+    line-height: 1.4em;
+    letter-spacing: 0.04em;
+    color: rgb(253, 249, 255);
+    text-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+}
+
+.livelinkbox2 .livelinktext2 .livelinkbutton{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4.5vh;
+}
+
+.livelinkbox2 .livelinktext2 .livelinkbutton a{
+    text-decoration: none;
+    font-family: 'montserrat', sans-serif;
+    font-size: 3vh;
+    font-weight: 600;
+    color: rgb(50, 180, 230);
+    background-color: rgba(255, 255, 255, 0.15);
+    border: 1.5px solid;
+    border-color: rgb(50, 180, 230);
+    padding-top: 1vh;
+    padding-bottom: 1vh;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 12px;
+    transition: 0.02s;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.livelinkbox2 .livelinktext2 .livelinkbutton a:hover{
+    transition: 0.08s;
+    color: rgb(255, 255, 255);
+    background-color: rgb(50, 140, 220);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.section4{
+    width: 100%;
+    height: 75vh;
+    background-color: rgb(249, 250, 255);
+    box-shadow: 0 -45px 40px rgba(0, 0, 0, 0.65);
+}
