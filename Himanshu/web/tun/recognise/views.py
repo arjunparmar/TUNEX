@@ -37,7 +37,7 @@ SA = "4NHQUGzhtTLFvgF5SZesLK" #seed artist for spotify
 ST = "0c6xIDDpzE81m2q797ordA" #seed track for spotify
 HEADER = {
     "content-Type": "application/json",
-    "authorization": "Bearer BQCEfcdl_ZRuUVE1yXnQ1JTRP_xzNv-7rw-eeVEZPl27Oo431oT97EXiR-6xBXJnL5nNZBLE7wQqQ2NjFknV2nlHTdCPkcbd0BgbEhhtZkQ_6x0-py41A1ZzavkkJ-KFqptCrQeAmBRghLYpvikTgLsy4GkFL--bxKQ"
+    "authorization": "Bearer BQAFPFgQ-XvJxIDB5tbQkM_tcPqUIbkwbYYDkOitD5gD5F0rYP6SxaRYEPwGpZpG2X99dwHDP3qvKB7eSInjEBAxtYbg99OaZBPa1KhiPmOp9gEJm1TbDlNKB634mn9lOuCUlrvttoaO18_TAKqmjaXsKCoG_JkHI2k"
 }
 
 res = ""  #result that we will pass to the result page
@@ -207,7 +207,7 @@ def form(request):
             print("next step")
             modified_image.save()
             genre = egmap(x1)
-            url = BASE_URL+'?limit=7&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
+            url = BASE_URL+'?limit=14&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
             r = rq.get(url, headers=HEADER)
             print(r.status_code)
             if r.json():
