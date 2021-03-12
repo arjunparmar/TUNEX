@@ -62,8 +62,9 @@
         font-size: 1.8vh;
         color: gray;
     }
-    .song-controls{
-        
+    audio{
+        width: 100%;
+
     }
 </style>
     <link rel="stylesheet" href="{% static 'styles/homestyle.css' %}">
@@ -72,20 +73,24 @@
 {% block content %}
 
 <div class="container">
-
-<h1 >Enter Image for testing</h1> 
-<form action="{% url 'form'%}" method="post" enctype="multipart/form-data">
-{% csrf_token %}
-{{ form.as_p }}
-<button type="submit" class="btn btn-lg btn-success"> Upload</button>
-</form>
-
+        <form action="{% url 'form'%}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+        <div class="form-group">
+            {{ form }}
+        </div>
+        <div class="form-group">
+            {% if not obj %}
+        <button type="submit" class="btn btn-primary">Upload</button>
+            {% endif %}
+        </div>
+        </form>
 
 {% if obj %}
-<h3> Successfully uploaded: {{image_obj.caption}} </h3>
-<p>Prediction is {{ prediction }}</p>
-<img src="{{ modified_image.image.url }}" alt="image" height="500px" width="auto">
-
+<div class="text-center"> 
+ <h3> Successfully Predicted </h3>
+<p>Predicted emotion is {{ prediction }}</p>
+<img src="{{ modified_image.image.url }}" alt="image" class="img-fluid">
+</div>
 </div>
 {% endif %}
 
@@ -95,7 +100,7 @@
         <span>Here's some songs recommended for you...</span>
     </div>
     <div class="all-song-cards">
-        {% for a, s, u, i in result_dic %}
+        {% for ind, a, s, u, i in result_dic %}
         <div class="single-card">
             <div class="song-art">
                 <img src="{{ i }}"/>
@@ -107,15 +112,15 @@
                 {{ a }}
             </div>
             <div class="song-controls">
-                <audio name="smedia" id="smedia">
+                <audio controls name="smedia" id="smedia-{{ind}}">
                     <source src="{{ u }}" type="audio/mpeg">
                 </audio>
-                <button class="play-button" id="play-button" onclick="playAudio()" type="button">
+                <!-- <button class="play-button-{{ind}}" id="play-button-{{ind}}" onclick="playAudio()" type="button">
                     Play
                 </button>
-                <button class="pause-button" id="pause-button" onclick="pauseAudio()" type="button">
+                <button class="pause-button-{{ind}}" id="pause-button-{{ind}}" onclick="pauseAudio()" type="button">
                     Pause
-                </button>
+                </button> -->
             </div>
         </div>
         {% endfor %}
@@ -124,28 +129,32 @@
 {% endif %}
 
 <script>
-    var audio = document.getElementById("smedia");
-    var play = document.getElementById("play-button");
-    var pause = document.getElementById("pause-button");
-
+    var audio = [], play = [], pause = [];
+    for(var i = 0 ; i < 3; i++){
+    audio[i] = document.getElementById("smedia-"+i);
+    play[i] = document.getElementById("play-button-"+i);
+    pause[i] = document.getElementById("pause-button-"+i);
     function playAudio() {
-    audio.play();
-    play.style.display = "none";
-    pause.style.display = "block";
+    audio[i].play();
+    play[i].style.display = "none";
+    pause[i].style.display = "block";
     }
 
     function pauseAudio() {
-    audio.pause();
-    pause.style.display = "none";
-    play.style.display = "block";
+    audio[i].pause();
+    pause[i].style.display = "none";
+    play[i].style.display = "block";
     }
+    }
+    
 </script>
 
 <div>
 {% if img.image %}
+<div class="text-center">
 
-<img src="{{img.image.url}}" alt="testing">
-
+<img src="{{img.image.url}}" class="img-fluid" alt="testing">
+</div>
 {% endif %}
 </div>
 

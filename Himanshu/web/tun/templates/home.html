@@ -11,7 +11,7 @@
 {% block content %}
     <div class="navbar" id="navbar">
         <div class="navtext">
-            <a href="" class="currentnav">HOME</a>
+            <a href="{% url 'home' %}" class="currentnav">HOME</a>
             <a href="{% url 'form' %}">STATIC</a>
             <a href="{% url 'showlive' %}">LIVE</a>
             <a href="https://drishti-svnit.github.io/drishti/index.html">ABOUT</a>

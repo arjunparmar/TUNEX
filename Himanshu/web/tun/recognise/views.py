@@ -33,12 +33,37 @@ EMOTIONS = ["afraid", "angry", "disgust", "happy", "neutral", "sad", "surprised"
 HF_PATH = 'haarcascade_frontalface_default.xml'
 BASE_URL = "https://api.spotify.com/v1/recommendations"
 MARKET = "IN" #market from which songs are recommended
-SA = "4NHQUGzhtTLFvgF5SZesLK" #seed artist for spotify
+SA = "4NHQUGzhtTLFvgF5SZesLK" #seed artist for spotify (this is not a constant will update as per the genre)
+SA_D = {"hiphop": "7dGJo4pcD2V6oG8kP0tJRR", # eminem
+        "rock": "31hrPUMBg96szrqNAb3oqP", # blacklite district
+        "country": "1UTPBmNbXNTittyMJrNkvw", # Blake Shelton
+        "pop": "5IH6FPUwQTxPSXurCrcIov", # alec benjamin
+        "metal": "2ye2Wgw4gimLv2eAKyk1NB", # metallica
+        "disco": "4tZwfgrHOc3mvqYlEYSvVi", # daft punk
+        "reggae": "6BH2lormtpjy3X9DyrGHVj", # bob marley
+        "jazz": "1Mxqyy3pSjf8kZZL4QVxS0", # frank sinatra
+        "bollywoodpop": "6CXEwIaXYfVJ84biCxqc9k", # vishal dadlani
+        "classical": "3WrFJ7ztbogyGnTHbHJFl2", # beatles
+        "blues": "3WrFJ7ztbogyGnTHbHJFl2", #B. B king
+        }
 ST = "0c6xIDDpzE81m2q797ordA" #seed track for spotify
-HEADER = {
-    "content-Type": "application/json",
-    "authorization": "Bearer BQAFPFgQ-XvJxIDB5tbQkM_tcPqUIbkwbYYDkOitD5gD5F0rYP6SxaRYEPwGpZpG2X99dwHDP3qvKB7eSInjEBAxtYbg99OaZBPa1KhiPmOp9gEJm1TbDlNKB634mn9lOuCUlrvttoaO18_TAKqmjaXsKCoG_JkHI2k"
+ST_D = {
+    "hiphop": "7MJQ9Nfxzh8LPZ9e9u68Fq",
+    "jazz": "0elmUoU7eMPwZX1Mw1MnQo",
+    "rock": "1DWiVxo482tHbgTWKHMWqg",
+    "metal": "1hKdDCpiI9mqz1jVHRKG0E",
+    "country": "0cB74Rrq9gKE5iUjwG9raA",
+    "reggae": "4dbaWokGcqEWvwTZDBbMD3",
+    "disco": "2cGxRwrMyEAp8dEbuZaVv6",
+    "pop": "1xQ6trAsedVPCdbtDAmk0c",
+    "classical": "7pKfPomDEeI4TPT6EOYjn9",
+    "blues": "3cg0dJfrQB66Qf2YthPb6G"
 }
+TOKEN = "BQBUBVI6ndX-R2t70WMCz3H1kjFNY7Pih0e9wg4kyjW-k-V3kHAlTIxxneT3CiM9-zXakDi9-qFk3YLkMspWbtWZ1NttlcZo6pvebJJZvMQMZkXovgHgenlqWADoLdkEZer_MFsgu3wV9fqFjvi4rNd7-x0IWYyYWyI"
+HEADER = {
+    "content-Type": "application/json"
+}
+HEADER["authorization"] = "Bearer "+TOKEN
 
 res = ""  #result that we will pass to the result page
 
@@ -152,8 +177,9 @@ def predict_video(image_array, name_image):
         f_img = buffer_img.tobytes()
         f1 = ContentFile(f_img)
         image_file = File(f1, name=name_image)
-        return img, label
         res = label
+        print("This is res -> {}".format(res))
+        return img, label
     except Exception as e:
         print(e)
 
@@ -165,6 +191,8 @@ def process_json(json):
     songs = []
     urls = []
     s_images = []
+    inde = []
+    counter = 0
     # print(json.keys())
     for entry in json:
         #print("entry is {}".format(entry))
@@ -175,8 +203,10 @@ def process_json(json):
             songs.append(entry["name"])
             urls.append(entry["preview_url"])
             s_images.append(entry["album"]["images"][0]["url"])
+            inde.append(counter)
+            counter = counter + 1
     print("artists are {} songs are {} and urls are {}".format(artists_l, songs, urls))
-    return zip(artists_l, songs, urls, s_images)
+    return zip(inde, artists_l, songs, urls, s_images)
 
         
 
@@ -207,6 +237,10 @@ def form(request):
             print("next step")
             modified_image.save()
             genre = egmap(x1)
+            print("genre is {}".format(genre))
+            if genre != '':
+                SA = SA_D[genre]
+                ST = ST_D[genre]
             url = BASE_URL+'?limit=14&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
             r = rq.get(url, headers=HEADER)
             print(r.status_code)
@@ -234,6 +268,7 @@ def egmap(emotionout):
     '''
     link between genre and emotion
     '''
+    print("emotionout is {}".format(emotionout))
     genrechosen=""
     afraidlist = ["hiphop"]
     angrylist = ["rock", "metal"]
@@ -243,21 +278,21 @@ def egmap(emotionout):
     sadlist = ["blues", "classical", "country"]
     surprisedlist = ["disco"]
     
-    if emotionout is 'Afraid':
+    if emotionout == 'afraid':
         genrechosen = random.choice(afraidlist)
-    if emotionout is 'Angry':
+    if emotionout == 'angry':
         genrechosen = random.choice(angrylist)
-    if emotionout is 'Disgust':
+    if emotionout == 'disgust':
         genrechosen = random.choice(disgustlist)
-    if emotionout is 'Happy':
+    if emotionout == 'happy':
         genrechosen = random.choice(happylist)
-    if emotionout is 'Neutral':
+    if emotionout == 'neutral':
         genrechosen = random.choice(neutrallist)
-    if emotionout is 'Sad':
+    if emotionout == 'sad':
         genrechosen = random.choice(sadlist)
-    if emotionout is 'Surprise':
+    if emotionout == 'surprise':
         genrechosen = random.choice(surprisedlist)
-    
+    print("genrechosen is {}".format(genrechosen))
     return genrechosen
 
 
@@ -269,6 +304,9 @@ def gen(camera):
         frame = cam.get_frame()
         # print(frame)
         m_image, lab =predict_video(frame, "result")
+        print("This is in gen")
+        SA = SA_D[lab]
+        ST = ST_D[lab]
         print(lab)
         # m_image = cv2.cvtColor(m_image, cv2.COLOR_RGB2BGR)
         ret, m_image = cv2.imencode('.jpg', m_image)
@@ -292,7 +330,12 @@ def showlive(request):
 
 
 def liveres(request):
+    print("This is live res")
     genre = egmap(res)
+    print("genre is {}".format(genre))
+    if genre != '':
+        SA = SA_D[genre]
+        ST = ST_D[genre]
     url = BASE_URL+'?limit=7&market='+MARKET+'&seed_artists='+SA+'&seed_genres='+genre+'&seed_tracks='+ST
     r = rq.get(url, headers=HEADER)
     print(r.status_code)

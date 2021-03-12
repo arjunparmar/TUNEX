@@ -65,12 +65,12 @@
         
     }
 </style>
-    <link rel="stylesheet" href="{% static 'styles/homestyle.css' %}">
 {% endblock %}
 
 {% block content %}
+<div class="container">
 <p> So, you are feeling {{ res }}</p>
-
+</div>
 {% if result_dic %}
 <div class="spotify-songs">
     <div class="spotify-songs-title">

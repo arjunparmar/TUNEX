@@ -6,37 +6,23 @@
     Live!
 {% endblock %}
 
-{% block style %}
-<style>
-    body{
-        overflow-x: hidden;
-        overflow-y: auto;
-    }
- .single-card{
-        width: 16%;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-        margin-right: 3%;
-        border-radius: 10px;
-    }
-    .song-art img{
-        width: 100%;
-        height: auto;
-        border-radius: 10px 10px 0 0;
-    }
-</style>
+{% block styles %}
     <link rel="stylesheet" href="{% static 'styles/homestyle.css' %}">
-
 {% endblock %}
 
 {% block content %}
-
+<div class="container">
 {% if not submitbutton %}
-<div class="single-card">
-<h3> Video Output:  </h3>
-<div class="song-art">
-<img src="{% url 'livefeed' %}">
+    <div class="single-card">
+        <h3> Video Output:  </h3>
+        <div class="text-center">
+            <img src="{% url 'livefeed' %}">
+        </div>
+        <div class="text-center">
+            <a href="{% url 'liveres' %}"><button class="btn btn-primary">Suggest some songs</button></a>
+        </div>
+    </div>
+
 </div>
-</div>
-<a href="{% url 'liveres' %}"><button>Suggest some songs</button></a>
 {% endif %}
 {% endblock %}
